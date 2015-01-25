@@ -9,6 +9,7 @@ makeCacheMatrix <- function(x = matrix()) {
   ## set the value of the matrix
   set <- function(y) {
     x <<- y
+    ## flush the cache when matrix changed via set function
     s <<- NULL
   }
   ## get the value of the matrix
@@ -37,7 +38,7 @@ cacheSolve <- function(x, ...) {
     message("Getting cached data")
     return(s)
   }
-  ## calcuate inverse of the 'x' if there is nothing cached
+  ## calculate inverse of the 'x' if there is nothing cached
   matrix <- x$get()
   s <- solve(matrix)
   ## cache calculated inverse of the 'x'
